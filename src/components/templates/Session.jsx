@@ -5,6 +5,8 @@ export default function Session() {
   return (
     <Box sx={{
       minHeight: "100vh",
+      width: "100vw",
+      boxSizing: "border-box",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",

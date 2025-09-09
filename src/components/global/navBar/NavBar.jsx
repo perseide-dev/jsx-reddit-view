@@ -1,37 +1,52 @@
-import { Button, Link, userNavigate } from "node_modules/@mui/material/index";
-import { useAuth } from "@cg/context/AuthContext";
+import { Box, Button } from '@mui/material'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
+import { useAuth } from '@cg/context/AuthContext'
 
 export default function NavBar() {
-    const { isAuthenticated, user, logout } = useAuth();
-    const navigate = userNavigate();
+  const { isAuthenticated, logout } = useAuth()
+  const navigate = useNavigate()
 
-    const handleLogout = () => {
-        logout();
-        navigate('/login');
-    };
+  const handleLogout = () => {
+    logout()
+    navigate('/login')
+  }
 
-    return (
-        <Box sx={{
-            width: '100vw',
-            boxSizing: 'border-box',
-            padding: '1rem',
-            display: 'flex',
-            justifyContent: 'space-between',
-            gap: '1rem',
-        }}>
-            <Button component={Link} href='/' variant="contained" color="primary">
-                Home
+  return (
+    <Box sx={{
+      width: '100%',
+      boxSizing: 'border-box',
+      p: 2,
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      gap: 2
+    }}>
+      <Button component={RouterLink} to='/' variant="contained">
+        Home
+      </Button>
+
+      <Box sx={{ display: 'flex', gap: 1 }}>
+        {!isAuthenticated && (
+          <>
+            <Button component={RouterLink} to='/login' variant="outlined">
+              Login
             </Button>
-            {!isAuthenticated && (
-                <>
-                    <Button component={Link} href='/login' variant="contained" color="primary">
-                        Login
-                    </Button>
-                    <Button component={Link} href='/register' variant="outlined" color="primary">
-                        Register
-                    </Button>
-                </>
-            )}
-        </Box>
-    );
+            <Button component={RouterLink} to='/register' variant="contained" color="secondary">
+              Register
+            </Button>
+          </>
+        )}
+        {isAuthenticated && (
+          <>
+            <Button component={RouterLink} to='/dashboard' variant="contained">
+              Dashboard
+            </Button>
+            <Button onClick={handleLogout} variant="outlined" color="error">
+              Logout
+            </Button>
+          </>
+        )}
+      </Box>
+    </Box>
+  )
 }

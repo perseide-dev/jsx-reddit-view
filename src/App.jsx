@@ -15,19 +15,20 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          {/* Landing (público) */}
           <Route element={<Landing />}>
             <Route index element={<LandingHome />} />
           </Route>
 
-            {/* Session (login / register) */}
           <Route element={<Session />}>
             <Route path='login' element={<SessionLogin />} />
             <Route path='register' element={<SessionRegister />} />
           </Route>
 
-          {/* Dashboard protegido */}
-          
+          <Route element={<ProtectedRoute />}>
+            <Route path='dashboard' element={<Dashboard />}>
+              <Route index element={<div>Bienvenido al panel</div>} />
+            </Route>
+          </Route>
         </Routes>
       </AuthProvider>
     </BrowserRouter>
