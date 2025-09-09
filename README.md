@@ -150,13 +150,6 @@ Reddit data:
    - `VITE_API_BASE_URL=https://your-api-host`
 7. Trigger build (deploy).
 
-## Production Notes
-
-- Consider moving axios creation to a dedicated module if expanding.
-- Add refresh token strategy if backend supports it.
-- Add error boundary for robustness.
-- Use React.lazy for route-level code splitting (wrap with `<Suspense>`).
-
 ## Extending
 
 Add a new dashboard sub-page:
