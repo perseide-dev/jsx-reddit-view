@@ -8,6 +8,7 @@ import ProtectedRoute from '@cu/auth/ProtectedRoute'
 import LandingHome from '@ce/landing/LandingHome'
 import SessionLogin from '@ce/session/SessionLogin'
 import SessionRegister from '@ce/session/SessionRegister'
+import PostDashboard from '@ce/dashboard/postDashboard'
 
 // ...existing code...
 function App() {
@@ -26,7 +27,7 @@ function App() {
 
           <Route element={<ProtectedRoute />}>
             <Route path='dashboard' element={<Dashboard />}>
-              <Route index element={<} />
+              <Route index element={<PostDashboard/>} />
             </Route>
           </Route>
         </Routes>
