@@ -2,7 +2,7 @@ import {
   Box, Container, Typography, Stack, IconButton, Button,
   TextField, Grid, Card, CardContent, CardActions, Chip, Link as MuiLink
 } from "@mui/material";
-import { Reddit, Twitter, GitHub, KeyboardArrowDown } from "@mui/icons-material";
+import { LinkedIn , GitHub, } from "@mui/icons-material";
 
 export default function LandingHome() {
     return (
@@ -62,13 +62,10 @@ export default function LandingHome() {
         spacing={1}
         sx={{ position: "absolute", right: { xs: 6, sm: 12 }, bottom: 20 }}
       >
-        <IconButton size="small" color="inherit" aria-label="Twitter/X" href="https://twitter.com" target="_blank">
-          <Twitter fontSize="small" />
+        <IconButton size="small" color="inherit" aria-label="Twitter/X" href="https://www.linkedin.com/in/perseide-dev/" target="_blank">
+          <LinkedIn fontSize="small" />
         </IconButton>
-        <IconButton size="small" color="inherit" aria-label="Reddit" href="https://reddit.com" target="_blank">
-          <Reddit fontSize="small" />
-        </IconButton>
-        <IconButton size="small" color="inherit" aria-label="GitHub" href="https://github.com" target="_blank">
+        <IconButton size="small" color="inherit" aria-label="GitHub" href="https://github.com/perseide-dev/jsx-reddit-view" target="_blank">
           <GitHub fontSize="small" />
         </IconButton>
       </Stack>
