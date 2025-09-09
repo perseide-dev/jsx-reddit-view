@@ -6,7 +6,7 @@ export default function Landing() {
         <Box>
             <NavBar/>
             <Box>
-                {/* Contenido de la página de inicio */}
+                {/* landing pages */}
             </Box>
         </Box>
     )
