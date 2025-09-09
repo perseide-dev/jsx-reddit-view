@@ -11,11 +11,11 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  const login = useCallback(async (email, password) => {
+  const login = useCallback(async (username, password) => {
     setLoading(true)
     setError(null)
     try {
-      const data = await postLoginService({ email, password })
+      const data = await postLoginService({ username, password })
       if (!data?.token) throw new Error('Respuesta inválida')
       saveToken(data.token)
       setToken(data.token)

@@ -1,10 +1,11 @@
 import { Box, Typography } from '@mui/material'
 import { Outlet } from 'react-router-dom'
+import NavBar from '../global/navBar/NavBar'
 
 export default function Dashboard() {
   return (
-    <Box sx={{ p: 3, textAlign: 'left' }}>
-      <Typography variant="h5" mb={2}>Dashboard</Typography>
+    <Box >
+      <NavBar />
       <Outlet />
     </Box>
   )

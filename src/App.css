@@ -1,0 +1,11 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+/* (opcional) asegúrate de que todo box model sea consistente */
+*, *::before, *::after {
+  box-sizing: border-box;
+}

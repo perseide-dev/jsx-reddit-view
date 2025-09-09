@@ -5,13 +5,13 @@ import { Link, useNavigate } from "react-router-dom"
 
 export default function SessionLogin() {
   const { login, loading, error } = useAuth()
-  const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const ok = await login(email, password)
+    const ok = await login(username, password)
     if (ok) navigate("/dashboard")
   }
 
@@ -19,11 +19,11 @@ export default function SessionLogin() {
     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
       <Typography variant="h5" fontWeight={600}>Iniciar sesión</Typography>
       <TextField
-        label="Email"
-        type="email"
+        label="User"
+        type="text"
         fullWidth
-        value={email}
-        onChange={e=>setEmail(e.target.value)}
+        value={username}
+        onChange={e=>setUsername(e.target.value)}
         required
       />
       <TextField
