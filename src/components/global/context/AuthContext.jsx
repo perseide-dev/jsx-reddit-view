@@ -1,5 +1,6 @@
-import { createContext, useContext, useEffect, useState, useCallback } from 'react'
-import { loginRequest, getToken, saveToken, clearToken, parseJwt } from '@cu/auth/auth'
+import { createContext, useContext, useState, useCallback } from 'react'
+import { postLoginService, postRegisterService } from '@/services/auth.services'
+import { getToken, saveToken, clearToken, parseJwt } from '@cu/auth/auth'
 
 const AuthContext = createContext(null)
 export default AuthContext
@@ -14,14 +15,29 @@ export function AuthProvider({ children }) {
     setLoading(true)
     setError(null)
     try {
-      const t = await loginRequest({ email, password })
-      saveToken(t)
-      setToken(t)
-      setUser(parseJwt(t))
+      const data = await postLoginService({ email, password })
+      if (!data?.token) throw new Error('Respuesta inválida')
+      saveToken(data.token)
+      setToken(data.token)
+      setUser(parseJwt(data.token))
       return true
     } catch (e) {
       setError(e.message || 'Error de autenticación')
       return false
+    } finally {
+      setLoading(false)
+    }
+  }, [])
+
+  const register = useCallback(async (form) => {
+    setLoading(true)
+    setError(null)
+    try {
+      const data = await postRegisterService(form)
+      return data
+    } catch (e) {
+      setError(e.message || 'Error de registro')
+      return null
     } finally {
       setLoading(false)
     }
@@ -33,7 +49,16 @@ export function AuthProvider({ children }) {
     setUser(null)
   }, [])
 
-  const value = { token, user, loading, error, login, logout, isAuthenticated: !!token }
+  const value = {
+    token,
+    user,
+    loading,
+    error,
+    login,
+    register,
+    logout,
+    isAuthenticated: !!token
+  }
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 

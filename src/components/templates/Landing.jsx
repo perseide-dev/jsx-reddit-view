@@ -1,4 +1,4 @@
-import { Box } from "node_modules/@mui/material/index";
+import { Box } from "@mui/material";
 import NavBar from "../global/navBar/NavBar";
 
 export default function Landing() {

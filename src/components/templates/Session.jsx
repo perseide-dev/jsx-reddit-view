@@ -1,13 +1,26 @@
-
-import { Box, Typography } from "node_modules/@mui/material/index";
+import { Box } from "@mui/material"
+import { Outlet } from "react-router-dom"
 
 export default function Session() {
-    return (
-        <Box sx ={{ height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", backgroundColor: "#f5f5f5" }}>
-            <Box sx={{ p: 4, backgroundColor: "#fff", borderRadius: "22rem", boxShadow: 3, textAlign: "center" }}>
-                {/* session pages */}
-            </Box>
-        </Box>
-    );
+  return (
+    <Box sx={{
+      minHeight: "100vh",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      bgcolor: "#f5f5f5",
+      p: 2
+    }}>
+      <Box sx={{
+        width: "100%",
+        maxWidth: 420,
+        bgcolor: "#fff",
+        p: 4,
+        borderRadius: 4,
+        boxShadow: 3
+      }}>
+        <Outlet />
+      </Box>
+    </Box>
+  )
 }
-
