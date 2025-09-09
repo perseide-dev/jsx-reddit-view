@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@ap/*":[
+        "src/assets/png"
+      ],
+      "@ct/*":[
+        "src/components/templates/*"
+      ],
+      "@cg/*": [
+        "src/components/global/*"
+      ],
+      "@ce/*": [
+        "src/components/pages/*"
+      ],
+      "@cu/*": [
+        "src/components/util/*"
+      ],
+    },
+    "target": "es6",
+    "module": "esnext"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
